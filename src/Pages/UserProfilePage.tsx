@@ -4,6 +4,9 @@ import { useGetMyUser, useUpdateMyUser } from "../services/apiClient";
 const UserProfilePage = () => {
   const { currentUser } = useGetMyUser();
   const { updateUser, isPending } = useUpdateMyUser();
+  if (!currentUser) {
+    return <div>Loading...</div>;
+  }
   return (
     <UserProfileForm
       currentUser={currentUser}
