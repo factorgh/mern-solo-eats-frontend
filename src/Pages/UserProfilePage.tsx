@@ -2,9 +2,9 @@ import UserProfileForm from "@/forms/user-profile-form/UserProfileForms";
 import { useGetMyUser, useUpdateMyUser } from "../services/apiClient";
 
 const UserProfilePage = () => {
-  const { currentUser } = useGetMyUser();
+  const { currentUser, isLoading } = useGetMyUser();
   const { updateUser, isPending } = useUpdateMyUser();
-  if (!currentUser) {
+  if (isLoading || !currentUser) {
     return <div>Loading...</div>;
   }
   return (
