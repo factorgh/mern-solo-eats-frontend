@@ -7,12 +7,13 @@ import {
   DropdownMenuItem,
 } from "./ui/dropdown-menu";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 
 const MainNavLinks = () => {
   const { user, logout } = useAuth0();
+  const navigate = useNavigate();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
@@ -33,7 +34,7 @@ const MainNavLinks = () => {
         <Separator />
         <DropdownMenuItem>
           <Button
-            onClick={() => logout()}
+            onClick={() => logout().then(() => navigate("/"))}
             className="bg-orange-500 hover:text-gray-500 font-bold flex-1 "
           >
             logout
