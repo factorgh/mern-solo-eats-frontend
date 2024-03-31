@@ -16,6 +16,12 @@ const MobileNavLinks = () => {
       <Separator />
       <Link
         className=" font-bold flex items-center p-3 hover:text-orange-500"
+        to="/manage-restaurant"
+      >
+        Manage Restaurant
+      </Link>
+      <Link
+        className=" font-bold flex items-center p-3 hover:text-orange-500"
         to="/user-profile"
       >
         User Profile

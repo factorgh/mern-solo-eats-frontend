@@ -1,5 +1,5 @@
 import UserProfileForm from "@/forms/user-profile-form/UserProfileForms";
-import { useGetMyUser, useUpdateMyUser } from "../services/apiClient";
+import { useGetMyUser, useUpdateMyUser } from "../services/myUserApi";
 
 const UserProfilePage = () => {
   const { currentUser } = useGetMyUser();

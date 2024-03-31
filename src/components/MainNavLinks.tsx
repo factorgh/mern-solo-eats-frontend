@@ -25,6 +25,14 @@ const MainNavLinks = () => {
       <DropdownMenuContent className="w-56">
         <DropdownMenuItem>
           <Link
+            to="/manage-restaurant"
+            className="flex px-3 bg-white flex-1 hover:text-orange-500"
+          >
+            Manage Restaurant
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link
             to="/user-profile"
             className="flex px-3 bg-white flex-1 hover:text-orange-500"
           >
