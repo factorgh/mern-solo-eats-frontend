@@ -52,27 +52,26 @@ export const useGetMyOrders = () => {
 export const useCreateCheckoutSession = () => {
   const { getAccessTokenSilently } = useAuth0();
 
-  const createCheckoutSessionRequest = async (
-    checkoutSessionRequest: CheckoutSessionRequest
+  const createCheckoutSessionFn = async (
+    createCheckoutSessionRequest: CheckoutSessionRequest
   ) => {
-    const accessToken = await getAccessTokenSilently();
+    const token = await getAccessTokenSilently();
 
     const response = await fetch(
-      `${API_BASE_URL}/api/order/checkout/create-checkout-session`,
+      `${API_BASE_URL}/api/v1/order/checkout/create-checkout-session`,
       {
         method: "POST",
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(checkoutSessionRequest),
+        body: JSON.stringify(createCheckoutSessionRequest),
       }
     );
 
     if (!response.ok) {
-      throw new Error("Unable to create checkout session");
+      throw new Error("Couldnt finish checkout");
     }
-
     return response.json();
   };
 
@@ -80,16 +79,12 @@ export const useCreateCheckoutSession = () => {
     mutateAsync: createCheckoutSession,
     isPending,
     error,
-    reset,
-  } = useMutation({ mutationFn: createCheckoutSessionRequest });
+  } = useMutation({
+    mutationFn: createCheckoutSessionFn,
+  });
 
   if (error) {
     toast.error(error.toString());
-    reset();
   }
-
-  return {
-    createCheckoutSession,
-    isPending,
-  };
+  return { createCheckoutSession, isPending };
 };
