@@ -21,7 +21,7 @@ const Home = () => {
         <span className="text-xl">Food is just a click away</span>
         <SearchBar
           onSubmit={handleSearchSubmit}
-          placeHolder="Search by city or town"
+          placeHolder="Search by city or town (example cities london or manchester)"
         />
       </div>
       <div className="grid md:grid-cols-2 gap-5">
